@@ -15,9 +15,11 @@ class Pracownik:
 			e = d*0.09
 			f = d*0.0775
 			g = 111.25
-			h = int(self.pensja - c - g)
+			h = self.pensja - c - g
+			h_2 = round(h, 0)
+
 			i = ((h)*0.18)-46.33
-			j = int(i-f)
+			j = round(i-f, 0)
 			self.netto = self.pensja - c - e - j
 			return self.netto
 
