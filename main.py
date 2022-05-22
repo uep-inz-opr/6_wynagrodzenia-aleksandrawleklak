@@ -10,7 +10,7 @@ class Pracownik:
 			return f"{self.imie} {self.pensja}"
 
 		def suma_netto(self):
-			c = round((self.pensja *0.0976) + (self.pensja*0.015) + (self.pensja*0.0245), 2)
+			c = round(round(self.pensja *0.0976,2) + round(self.pensja*0.015,2) + round(self.pensja*0.0245,2), 2)
 			d = round(self.pensja - c, 2)
 			e = round(d*0.09, 2)
 			f = round(d*0.0775, 2)
@@ -20,16 +20,16 @@ class Pracownik:
 			i = round(((h_2)*0.18)-46.33,2)
 			j = round(i-f, 2)
 			j_2 = round(j, 0)
-			self.netto = (self.pensja - c - e - j_2)
+			self.netto = round((self.pensja - c - e - j_2), 2)
 			return self.netto
 
 		def suma_skladki(self):
-			self.skladki = self.pensja *0.0976 + self.pensja*0.065 + self.pensja*0.0193 + self.pensja*0.0245 + self.pensja*0.001
-			return self.skladki
+			self.skladki = round(self.pensja *0.0976, 2) + round(self.pensja*0.065, 2) + round(self.pensja*0.0193,2) + round(self.pensja*0.0245,2) + round(self.pensja*0.001,2)
+			return round(self.skladki, 2)
 
 		def suma_koszt(self):
-			self.koszt = self.pensja + self.pensja *0.0976 + self.pensja*0.065 + self.pensja*0.0193 + self.pensja*0.0245 + self.pensja*0.001
-			return self.koszt
+			self.koszt = self.pensja + round(self.pensja *0.0976,2) + round(self.pensja*0.065,2) + round(self.pensja*0.0193,2) + round(self.pensja*0.0245,2) + round(self.pensja*0.001,2)
+			return round(self.koszt, 2)
 
 		def suma_calkowity(self):
 			return round(self.pensja + self.suma_skladki(),2)
