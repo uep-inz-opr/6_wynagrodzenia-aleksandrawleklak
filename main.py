@@ -10,29 +10,29 @@ class Pracownik:
 			return f"{self.imie} {self.pensja}"
 
 		def suma_netto(self):
-			c = (self.pensja *0.0976) + (self.pensja*0.015) + (self.pensja*0.0245)
-			d = self.pensja - c
-			e = d*0.09
-			f = d*0.0775
-			g = 111.25
-			h = self.pensja - c - g
+			c = round((self.pensja *0.0976) + (self.pensja*0.015) + (self.pensja*0.0245), 2)
+			d = round(self.pensja - c, 2)
+			e = round(d*0.09, 2)
+			f = round(d*0.0775, 2)
+			g = round(111.25, 2)
+			h = round(self.pensja - c - g, 2)
 			h_2 = round(h, 0)
-
-			i = ((h)*0.18)-46.33
-			j = round(i-f, 0)
-			self.netto = self.pensja - c - e - j
+			i = round(((h_2)*0.18)-46.33,2)
+			j = round(i-f, 2)
+			j_2 = round(j, 0)
+			self.netto = (self.pensja - c - e - j_2)
 			return self.netto
 
 		def suma_skladki(self):
 			self.skladki = self.pensja *0.0976 + self.pensja*0.065 + self.pensja*0.0193 + self.pensja*0.0245 + self.pensja*0.001
-			return round(self.skladki, 2)
+			return self.skladki
 
 		def suma_koszt(self):
 			self.koszt = self.pensja + self.pensja *0.0976 + self.pensja*0.065 + self.pensja*0.0193 + self.pensja*0.0245 + self.pensja*0.001
-			return round(self.koszt, 2)
+			return self.koszt
 
 		def suma_calkowity(self):
-			return round((self.pensja + self.suma_skladki()), 2)
+			return round(self.pensja + self.suma_skladki(),2)
 
 		
 
@@ -53,9 +53,3 @@ for i in range(0, liczba_pracownikow):
     	f"{lista_pracownikow[i].suma_skladki():.2f}",
     f"{lista_pracownikow[i].suma_koszt():.2f}")
 print(calkowity)
-
-
-
-
-
-
